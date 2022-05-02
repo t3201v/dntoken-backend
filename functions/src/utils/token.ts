@@ -23,3 +23,13 @@ export default function pubKeyToAddress(
   let address = trimFirst12Bytes(web3.utils.keccak256(pubkey));
   return web3.utils.toChecksumAddress(address);
 }
+
+export function pritoPubAndAddr(
+  pri: string | ec.KeyPair | Buffer | number[] | Uint8Array
+): [pub: string, add: string] {
+  const keys: ec.KeyPair = EC.keyFromPrivate(pri, "hex");
+  const pubKey = keys.getPublic(true, "hex");
+  const addr = pubKeyToAddress(pubKey);
+
+  return [pubKey, addr];
+}

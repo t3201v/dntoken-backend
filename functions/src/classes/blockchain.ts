@@ -81,13 +81,14 @@ export default class Blockchain implements IBlockchain {
 
     newBlock = this.consensus.generateBlock(newBlock, this.difficulty);
 
+    newBlock.miner = minerAddr;
     this.chain.push(newBlock);
     return newBlock;
   }
 
   addTransaction(trans: Transaction) {
-    if (trans.amount <= 0)
-      throw new Error("The amount sent must be greater than 0");
+    if (trans.amount < 0)
+      throw new Error("The amount sent must be equal or greater than 0");
 
     if (!trans.from || !trans.to) {
       throw new Error("Transaction must include from and to address");
@@ -114,6 +115,25 @@ export default class Blockchain implements IBlockchain {
       }
     }
     return balance;
+  }
+
+  getTxHistoryOfAddress(pubKey: string, address: string): Transaction[] {
+    let tx: Transaction[] = [];
+
+    for (const block of this.chain) {
+      for (const trans of block.transactions) {
+        if (trans.from === pubKey) {
+          trans.timestamp = block.timestamp;
+          tx.push(trans);
+        }
+        if (trans.to === address) {
+          trans.timestamp = block.timestamp;
+          tx.push(trans);
+        }
+      }
+    }
+
+    return tx;
   }
 
   checkChainValidity(): boolean {

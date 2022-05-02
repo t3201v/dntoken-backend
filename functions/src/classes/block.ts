@@ -8,6 +8,7 @@ export interface IBlock {
   precedingHash: string;
   hash?: string;
   nonce?: number;
+  miner?: string;
 }
 
 export default class Block implements IBlock {
@@ -22,6 +23,8 @@ export default class Block implements IBlock {
   hash: string;
 
   nonce: number;
+
+  miner?: string;
 
   constructor({
     index,

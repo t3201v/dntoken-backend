@@ -1,6 +1,12 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    ".write": true,
+    "chain": {
+      ".indexOn": "chain",
+      "chain": {
+        ".indexOn": "index"
+      }
+    }
   }
 }

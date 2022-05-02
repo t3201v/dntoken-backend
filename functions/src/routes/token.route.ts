@@ -7,4 +7,8 @@ tokenRouter.post("/add", tokenController.handleAddNewBlock);
 
 tokenRouter.post("/remove", tokenController.handleRemoveBlockChain);
 
+tokenRouter.get("/dashboard", tokenController.handleGetDataInDashboard);
+
+tokenRouter.get("/analytics", tokenController.handleGetBlockchainAnalytics);
+
 export default tokenRouter;

@@ -23,8 +23,9 @@
     "dotenv": "^16.0.0",
     "elliptic": "^6.5.4",
     "express": "^4.17.3",
-    "firebase": "^9.6.11",
+    "firebase": "^9.7.0",
     "morgan": "^1.10.0",
+    "socket.io": "^4.5.0",
     "web3": "^1.7.3"
   },
   "devDependencies": {

@@ -8,17 +8,20 @@ export interface ITransaction {
   from: string;
   to: string;
   signature?: string;
+  timestamp?: string | number | Date;
 }
 
 export default class Transaction implements ITransaction {
   amount: number;
-
+  
   from: string;
-
+  
   to: string;
-
+  
   signature: string;
-
+  
+  timestamp?: string | number | Date;
+  
   constructor({ amount, from, to, signature }: ITransaction) {
     this.amount = amount;
     this.from = from;
