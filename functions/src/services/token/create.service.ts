@@ -6,7 +6,7 @@ import { getFullChain, updateChain } from "../../repositories/token.repository";
 const createNewBlock = async (minerAddr: string): Promise<Block> => {
   const data = await getFullChain();
 
-  // console.log("current chain\n" + JSON.stringify(data.val(), null, 4));
+  // console.log("current chain\n" + JSON.stringify(data, null, 4));
   // if its empty, create genesis block
   if (!data) {
     const originBlockchain = new Blockchain();
@@ -22,7 +22,9 @@ const createNewBlock = async (minerAddr: string): Promise<Block> => {
   if (!newChain.checkChainValidity()) throw new Error("Invalid blockchain");
   // console.log("New chain\n" + JSON.stringify(newChain, null, 4));
 
-  await updateChain(newChain);
+  await updateChain(newChain).catch((err) => {
+    throw err;
+  });
   return newBlock;
 };
 

@@ -10,18 +10,20 @@ const handleAddNewBlock = (req: Request, res: Response) => {
   const { minerAddr }: { minerAddr: string | null } = req.body;
   createNewBlock(minerAddr || "")
     .then((b) => {
-      io.emit(newBkEv, { b });
+      if (b) {
+        io.emit(newBkEv, { b });
 
-      res.status(200).json({ message: "Added a new block" });
+        res.status(200).json({ message: "Added a new block" });
+      } else res.status(409).json({ message: "Error no block data" });
     })
-    .catch((err) => res.status(409).json({ message: err }));
+    .catch((err) => res.status(409).json({ message: err.message }));
 };
 
 // mainly for testing only
 const handleRemoveBlockChain = (req: Request, res: Response) => {
   removeTheEntireBlockchain()
     .then(() => res.status(200).json({ message: "Deleted the blockchain" }))
-    .catch((err) => res.status(409).json({ message: err }));
+    .catch((err) => res.status(409).json({ message: err.message }));
 };
 
 const handleGetDataInDashboard = (req: Request, res: Response) => {

@@ -2,9 +2,12 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
-    "build": "npx tsc",
+    "build": "npm run lint & tsc",
     "start": "ts-node ./index.ts",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverage": "nyc -r lcov -e .ts -x \"*.test.ts\" npm run test",

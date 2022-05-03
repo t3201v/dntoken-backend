@@ -33,6 +33,7 @@ export default class Block implements IBlock {
     precedingHash = "",
     hash,
     nonce = 0,
+    miner = "",
   }: IBlock) {
     this.index = index;
     this.timestamp = timestamp || Date.now();
@@ -41,6 +42,7 @@ export default class Block implements IBlock {
     this.precedingHash = precedingHash;
     this.hash = hash || this.computeHash();
     this.nonce = nonce;
+    this.miner = miner;
   }
 
   static toBlock({
@@ -50,6 +52,7 @@ export default class Block implements IBlock {
     precedingHash,
     hash,
     nonce,
+    miner,
   }: IBlock): Block {
     return new Block({
       index,
@@ -58,6 +61,7 @@ export default class Block implements IBlock {
       precedingHash,
       hash,
       nonce,
+      miner,
     });
   }
 
