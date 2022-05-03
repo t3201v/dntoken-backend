@@ -13,25 +13,25 @@ See in [./functions/.env.example.txt](https://github.com/t3201v/dntoken-backend/
 cd ./functions
 ```
 
-Then install the lib\
+Then install the lib
 
 ```
 npm i
 ```
 
-Run project:\
+Run project:
 
 ```
 npm start
 ```
 
-Run test:\
+Run test:
 
 ```
 npm run test
 ```
 
-Check lint:\
+Check lint:
 
 ```
 npm run lint
@@ -41,13 +41,13 @@ npm run lint
 
 ### Run project with docker:
 
-Build docker image\
+Build docker image
 
 ```
 docker build -t be-dntoken .\functions\
 ```
 
-Run image\
+Run image
 
 ```
 docker run -d -p 8080:8080 be-dntoken
