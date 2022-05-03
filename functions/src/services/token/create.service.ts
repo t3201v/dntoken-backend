@@ -1,9 +1,8 @@
-import Block from "../../classes/block";
 import Blockchain from "../../classes/blockchain";
 import { getFullChain, updateChain } from "../../repositories/token.repository";
 
 // if no block exists, create a new blockchain
-const createNewBlock = async (minerAddr: string): Promise<Block> => {
+const createNewBlock = async (minerAddr: string) => {
   const data = await getFullChain();
 
   // console.log("current chain\n" + JSON.stringify(data, null, 4));
@@ -25,7 +24,14 @@ const createNewBlock = async (minerAddr: string): Promise<Block> => {
   await updateChain(newChain).catch((err) => {
     throw err;
   });
-  return newBlock;
+
+  let total = 0;
+  newBlock.transactions.forEach((t) => {
+    total += t.amount;
+    t.timestamp = newBlock.timestamp;
+  });
+
+  return { ...newBlock, total, txns: newBlock.transactions.length };
 };
 
 export default createNewBlock;

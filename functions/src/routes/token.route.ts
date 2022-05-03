@@ -5,7 +5,7 @@ const tokenRouter: Router = express.Router();
 
 tokenRouter.post("/add", tokenController.handleAddNewBlock);
 
-tokenRouter.post("/remove", tokenController.handleRemoveBlockChain);
+// tokenRouter.post("/remove", tokenController.handleRemoveBlockChain);
 
 tokenRouter.get("/dashboard", tokenController.handleGetDataInDashboard);
 
