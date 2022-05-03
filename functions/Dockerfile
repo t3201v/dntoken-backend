@@ -10,13 +10,14 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 # copy source code to /app/src folder
-COPY . /app/src
+COPY . .
 
 # check files list
 RUN ls -a
 
-RUN npm install
-RUN npm run build
+RUN yarn install
+RUN yarn run test
+RUN yarn run build
 
 EXPOSE 8080
 CMD [ "node", "./index.js" ]

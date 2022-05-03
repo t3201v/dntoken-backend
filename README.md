@@ -3,7 +3,7 @@
 This project is main to be blockchain research
 
 Set up .env\
-See in [./functions/.env.example.txt](https://github.com/t3201v/dntoken-backend/blob/main/functions.env.example.txt)
+See in [./functions/.env.example.txt](https://github.com/t3201v/dntoken-backend/blob/main/functions/.env.example.txt)
 
 In the project root, you should go to **functions** directory:\
 `cd ./functions`
